@@ -7,5 +7,9 @@ module.exports = {
 	output: {
 		filename: 'main.js',
 		path: outputPath
+	},
+	// webpack-dev-server --openでブラウザが起動するディレクトリを指定
+	devServer: {
+		contentBase: outputPath
 	}
 }
