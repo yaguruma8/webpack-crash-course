@@ -1,13 +1,14 @@
 import _ from 'lodash'
-import { NAME as NAME_M }  from './utilities'
+import './style.css'
 
-console.log(NAME_M)
+// console.log(style.toString())
 
 function component() {
 	const element = document.createElement('div')
-	const array = ['Hello', 'webpack!!'];
+	const array = ['Hello', 'webpack'];
 	element.innerHTML = _.join(array, ' ');
 	return element;
 }
 
 document.body.appendChild(component());
+document.body.classList.add('haikei')
