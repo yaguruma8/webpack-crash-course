@@ -18,6 +18,10 @@ module.exports = {
 				use: ['style-loader', 'css-loader']
 			},
 			{
+				test: /\.scss$/,
+				use: ['style-loader', 'css-loader', 'sass-loader']
+			},
+			{
 				test: /\.(jpe?g|png|gif|swg|ico)$/i,
 				loader: 'url-loader',
 				// url-loaderにfile-loaderを適用する場合はoptions
