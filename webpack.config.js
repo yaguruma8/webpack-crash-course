@@ -16,6 +16,17 @@ module.exports = {
 				test:/\.css$/,
 				// use testで指定したファイルに適用するローダーの名前
 				use: ['style-loader', 'css-loader']
+			},
+			{
+				test: /\.(jpe?g|png|gif|swg|ico)$/i,
+				loader: 'url-loader',
+				// url-loaderにfile-loaderを適用する場合はoptions
+				options: {
+					// ファイルサイズの上限（これ以上はファイルとして扱う）
+					limit: 2048,
+					// 画像ファイルのパスの設定
+					name: './images/[name].[ext]'
+					}
 			}
 		]
 	},
