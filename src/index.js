@@ -1,20 +1,7 @@
-import _ from 'lodash'
-import './style.css'
-import './style.scss'
-import logo from './logo.png'
+import React from 'react'
+import ReactDom from 'react-dom'
 
-// console.log(style.toString())
-
-function component() {
-	const element = document.createElement('div')
-	const array = ['Hello', 'webpack'];
-	element.innerHTML = _.join(array, ' ');
-	return element;
-}
-
-document.body.appendChild(component());
-document.body.classList.add('haikei');
-
-const image = new Image()
-image.src = logo
-document.body.appendChild(image);
+ReactDom.render(
+	<div>Hello, React!</div>,
+	document.getElementById('root')
+);
