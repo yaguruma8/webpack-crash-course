@@ -1,6 +1,7 @@
 const path = require('path');
 // プラグインの読み込み
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const outputPath = path.resolve(__dirname, 'dist')
 
@@ -29,13 +30,9 @@ module.exports = {
 			},
 			{
 				// test ローダーを適用するファイル（正規表現）
-				test:/\.css$/,
+				test:/\.(sc|c)ss$/,
 				// use testで指定したファイルに適用するローダーの名前
-				use: ['style-loader', 'css-loader']
-			},
-			{
-				test: /\.scss$/,
-				use: ['style-loader', 'css-loader', 'sass-loader']
+				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
 			},
 			{
 				test: /\.(jpe?g|png|gif|swg|ico)$/i,
@@ -65,6 +62,10 @@ module.exports = {
 			template: './src/index.html',
 			// 最終的に出力するファイル名
 			filename: './index.html'
-		})
+		}),
+		new MiniCssExtractPlugin({
+			// 出力するファイル名 name=デフォルトではmain hash=バンドル時にユニークなhashをつける
+			filename: './[name].[hash].css'
+		}),
 	]
 }
