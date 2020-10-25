@@ -2,6 +2,7 @@ const path = require('path');
 // プラグインの読み込み
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const outputPath = path.resolve(__dirname, 'dist')
 
@@ -67,5 +68,15 @@ module.exports = {
 			// 出力するファイル名 name=デフォルトではmain hash=バンドル時にユニークなhashをつける
 			filename: './[name].[hash].css'
 		}),
-	]
+	],
+	// ugilifyjs-webpack-pluginの設定 
+	optimization: {
+		minimizer: [new UglifyJsPlugin({
+			uglifyOptions: {
+				compress: {
+					drop_console: true,
+				}
+			},
+		})],
+	 },
 }
